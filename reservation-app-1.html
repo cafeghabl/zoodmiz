@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>زودمیز | رزرو میز و پرداخت</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F3;--card:#fff;--ink:#14302B;--mut:#5E716C;--line:#D8E2DE;--acc:#F2A900;--accInk:#2A1E00;--ok:#1E7A55;--bad:#B3392F;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A18;--card:#172623;--ink:#E8F1EE;--mut:#93A8A2;--line:#2A3D39;--ok:#4CC38A;--bad:#F07A6E}}
+:root[data-theme="dark"]{--bg:#0F1A18;--card:#172623;--ink:#E8F1EE;--mut:#93A8A2;--line:#2A3D39;--ok:#4CC38A;--bad:#F07A6E}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.7}
+main{max-width:480px;margin:0 auto;padding:16px 16px 40px}
+h1{font-size:22px;font-weight:800;margin:4px 0 2px}
+h2{font-size:17px;font-weight:800;margin:0 0 8px}
+p{margin:0}.mut{color:var(--mut);font-size:13px}
+.seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;margin:12px 0 18px}
+.seg button{flex:1;border:0;background:none;color:var(--mut);font:600 14px Vazirmatn,Tahoma;padding:9px;border-radius:10px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.place{display:flex;gap:12px;align-items:center;cursor:pointer;width:100%;text-align:right;font:inherit;color:inherit}
+.ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;flex:none}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px Vazirmatn,Tahoma;padding:8px 14px;border-radius:999px;cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.btn{width:100%;border:0;border-radius:14px;padding:14px;font:800 16px Vazirmatn,Tahoma;background:var(--acc);color:var(--accInk);cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.sec{background:none;border:1px solid var(--line);color:var(--ink);font-weight:600}
+.back{border:0;background:none;color:var(--mut);font:600 14px Vazirmatn,Tahoma;cursor:pointer;padding:4px 0 10px}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;cursor:pointer}
+.step b{min-width:28px;text-align:center;font-size:18px}
+.sum div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.sum div:last-child{border:0;font-weight:800;font-size:16px}
+.tag{font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;border:1px solid currentColor}
+.t-wait{color:#B98200}.t-ok{color:var(--ok)}.t-no{color:var(--bad)}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.stats .card{margin:0;text-align:center;padding:10px 4px}.stats b{font-size:20px;display:block}
+.acts{display:flex;gap:8px;margin-top:10px}.acts button{flex:1;padding:9px;border-radius:10px;font:600 14px Vazirmatn,Tahoma;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.acts .go{background:var(--ok);color:#fff;border-color:var(--ok)}
+.done{text-align:center;padding:24px 8px}.done .big{font-size:56px}
+.code{display:inline-block;margin:10px 0;padding:8px 18px;border:2px dashed var(--ok);border-radius:12px;font-weight:800;font-size:20px;letter-spacing:2px;direction:ltr}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<div id="logo" style="display:flex;align-items:center;gap:12px;color:var(--ink)"><svg width="80" height="34" viewBox="0 10 220 94" aria-hidden="true"><rect x="6" y="92" width="208" height="8" rx="4" fill="currentColor"/><path d="M26 46h60v26a22 22 0 0 1-22 20H48a22 22 0 0 1-22-20z" fill="currentColor"/><path d="M86 54h6a11 11 0 0 1 0 22h-8" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M46 36c-6-6 6-10 0-18M66 36c-6-6 6-10 0-18" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M36 56v12" style="stroke:var(--card)" stroke-width="5" stroke-linecap="round"/><path d="M118 90A42 42 0 0 1 202 90Z" fill="currentColor"/><circle cx="160" cy="42" r="6" fill="currentColor"/><path d="M132 76A30 30 0 0 1 146 60" style="stroke:var(--card)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M4 62h12M4 76h12" stroke="var(--acc)" stroke-width="5" stroke-linecap="round"/></svg><h1 style="margin:0">زودمیز</h1></div>
+<p class="mut">رزرو میز و پرداخت آنلاین؛ نسخه آزمایشی</p>
+<div class="seg" role="tablist">
+  <button id="tC" class="on" onclick="setRole('c')">مشتری</button>
+  <button id="tM" onclick="setRole('m')">مدیر کافه</button>
+  <button id="tA" style="display:none" onclick="setRole('a')">مالک پلتفرم</button>
+</div>
+<div id="view"></div>
+</main>
+<script>
+var fa=function(n){return Number(n).toLocaleString('fa-IR')};
+var places=[
+ {id:1,name:'کافه نیمکت',kind:'کافه',area:'ونک، تهران',rate:4.7,emoji:'☕',bg:'#F6E3B4',menu:[['اسپرسو',95000],['کیک شکلاتی',140000],['چای ماسالا',85000]],slots:['۱۶:۰۰','۱۷:۳۰','۱۹:۰۰','۲۰:۳۰'],off:['۱۷:۳۰']},
+ {id:2,name:'رستوران سفره‌خانه باغ',kind:'رستوران',area:'نیاوران، تهران',rate:4.5,emoji:'🍲',bg:'#CFE6D8',menu:[['چلوکباب کوبیده',420000],['خورشت قیمه',360000],['دوغ محلی',60000]],slots:['۱۳:۰۰','۱۴:۳۰','۲۰:۰۰','۲۲:۰۰'],off:['۲۰:۰۰','۲۲:۰۰']},
+ {id:3,name:'کافه‌رستوران پل',kind:'کافه‌رستوران',area:'ولیعصر، تهران',rate:4.8,emoji:'🍰',bg:'#F2C9C2',menu:[['پاستا آلفردو',380000],['سالاد سزار',290000],['لیموناد',90000]],slots:['۱۲:۳۰','۱۵:۰۰','۱۸:۰۰','۲۱:۰۰'],off:[]}
+];
+var days=['امروز','فردا','پس‌فردا'];
+var S={role:'c',screen:'list',pid:null,day:0,slot:null,guests:2,rate:2,free:true,month:1,auth:false,fails:0,cart:{},res:[
+ {id:1,name:'سارا محمدی',place:'کافه نیمکت',day:'امروز',slot:'۱۹:۰۰',g:4,amt:420000,st:'wait'},
+ {id:2,name:'علی رضایی',place:'کافه نیمکت',day:'امروز',slot:'۱۶:۰۰',g:2,amt:260000,st:'ok'}
+],code:''};
+function P(){return places.filter(function(p){return p.id===S.pid})[0]}
+function fee(){return S.free&&S.month===1?0:S.rate}
+function total(){var p=P(),t=0;if(!p)return 0;p.menu.forEach(function(m,i){t+=m[1]*(S.cart[i]||0)});return t}
+function lines(){var a=[];P().menu.forEach(function(m,i){if(S.cart[i])a.push(m[0]+' ×'+fa(S.cart[i]))});return a.join('، ')}
+function qty(i,d){S.cart[i]=Math.max(0,(S.cart[i]||0)+d);render()}
+function menuHtml(p){var h='<h2 style="font-size:15px">سفارش غذا و نوشیدنی</h2>';p.menu.forEach(function(m,i){h+='<div class="row card" style="padding:10px 14px"><span><b>'+m[0]+'</b><br><span class="mut">'+fa(m[1])+' تومان</span></span><div class="step"><button onclick="qty('+i+',1)">+</button><b>'+fa(S.cart[i]||0)+'</b><button onclick="qty('+i+',-1)">−</button></div></div>'});return h+'<div class="row" style="margin:4px 0 14px"><b>جمع کل</b><b>'+fa(total())+' تومان</b></div>'}
+function unlock(){var v=document.getElementById('pin').value;if(S.fails>=3)return;if(v==='1234'){S.auth=true;S.fails=0}else{S.fails++}render()}
+function logout(){S.auth=false;document.getElementById('tA').style.display='none';setRole('c')}
+var taps=0,tapT;
+document.getElementById('logo').addEventListener('click',function(){taps++;clearTimeout(tapT);tapT=setTimeout(function(){taps=0},2000);if(taps>=5){taps=0;document.getElementById('tA').style.display=''}});
+if(location.hash==='#owner'){document.getElementById('tA').style.display=''}
+function setRole(r){S.role=r;if(r!=='a'){S.auth=false}S.screen='list';document.getElementById('tC').className=r==='c'?'on':'';document.getElementById('tM').className=r==='m'?'on':'';document.getElementById('tA').className=r==='a'?'on':'';render()}
+function go(s,id){S.screen=s;if(id){S.pid=id;S.slot=null;S.guests=2;S.day=0;S.cart={}}render();window.scrollTo(0,0)}
+function pick(k,v){S[k]=v;render()}
+function pay(){S.code='MZ-'+fa(Math.floor(1000+Math.random()*8999));
+ S.res.unshift({id:Date.now(),name:'شما (مشتری)',place:P().name,day:days[S.day],slot:S.slot,g:S.guests,amt:total(),st:'wait'});S.cart={};go('done')}
+function decide(id,st){S.res.forEach(function(r){if(r.id===id)r.st=st});render()}
+function render(){var v=document.getElementById('view'),h='';
+ if(S.role==='a'&&!S.auth){
+  var lk=S.fails>=3;
+  h+='<div class="card"><h2>ورود مالک پلتفرم</h2><p class="mut" style="margin-bottom:10px">تنظیم کمیسیون و گزارش مالی فقط برای مالک قابل دسترسی است.</p><input id="pin" type="password" inputmode="numeric" autocomplete="off"'+(lk?' disabled':'')+' placeholder="رمز عبور" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:16px Vazirmatn,Tahoma;direction:ltr;text-align:center;margin-bottom:10px"><button class="btn" '+(lk?'disabled':'')+' onclick="unlock()">ورود</button>'+(S.fails?'<p class="t-no" style="margin-top:10px;font-size:13px">'+(lk?'ورود قفل شد. در نسخه واقعی با کد پیامکی باز می‌شود.':'رمز اشتباه است. '+fa(3-S.fails)+' تلاش باقی مانده.')+'</p>':'')+'<p class="mut" style="margin-top:10px">رمز نمایشی: 1234 (در نسخه واقعی ورود دومرحله‌ای)</p></div>';
+ } else if(S.role==='a'){
+  var live=S.res.filter(function(r){return r.st!=='no'}),tot=live.reduce(function(a,r){return a+r.amt},0),f=fee(),mine=Math.round(tot*f/100);
+  h+='<div class="row"><h2>درآمد پلتفرم شما</h2><button class="chip" onclick="logout()">خروج</button></div><div class="card"><div class="row"><b>ماه فعالیت</b><div class="chips" style="margin:0"><button class="chip'+(S.month===1?' on':'')+'" onclick="pick(\'month\',1)">ماه اول</button><button class="chip'+(S.month===2?' on':'')+'" onclick="pick(\'month\',2)">ماه دوم به بعد</button></div></div>'+
+  '<div class="row" style="margin-top:12px"><b>ماه اول رایگان</b><button class="chip'+(S.free?' on':'')+'" onclick="pick(\'free\','+(!S.free)+')">'+(S.free?'بله':'خیر')+'</button></div>'+
+  '<div class="row" style="margin-top:12px"><b>درصد کمیسیون</b><div class="step"><button onclick="pick(\'rate\',Math.min(10,S.rate+1))">+</button><b>'+fa(S.rate)+'٪</b><button onclick="pick(\'rate\',Math.max(1,S.rate-1))">−</button></div></div></div>'+
+  '<div class="stats"><div class="card"><b>'+fa(tot)+'</b><span class="mut">کل پرداخت‌ها (تومان)</span></div><div class="card"><b>'+fa(mine)+'</b><span class="mut">سهم شما</span></div><div class="card"><b>'+fa(tot-mine)+'</b><span class="mut">سهم کافه‌ها</span></div></div>'+
+  '<p class="mut">'+(f?'از هر پرداخت '+fa(f)+'٪ کسر و به حساب شما واریز می‌شود. مشتری هزینه اضافه نمی‌دهد و کمیسیون از سهم کافه کم می‌شود.':'این ماه دوره جذب است و کمیسیون صفر است.')+'</p><p class="mut" style="margin-top:6px">رزروهای ردشده و بازگشت‌خورده در محاسبه نیستند. برای امتحان، در تب «مشتری» رزرو بسازید.</p>';
+ } else if(S.role==='m'){
+  var w=S.res.filter(function(r){return r.st==='wait'}).length,o=S.res.filter(function(r){return r.st==='ok'}).length;
+  h+='<div class="stats"><div class="card"><b>'+fa(S.res.length)+'</b><span class="mut">کل رزروها</span></div><div class="card"><b>'+fa(w)+'</b><span class="mut">در انتظار</span></div><div class="card"><b>'+fa(o)+'</b><span class="mut">تأیید شده</span></div></div><h2>رزروهای امروز</h2>';
+  S.res.forEach(function(r){var t={wait:['در انتظار تأیید','t-wait'],ok:['تأیید شد','t-ok'],no:['رد شد','t-no']}[r.st];
+   h+='<div class="card"><div class="row"><b>'+r.name+'</b><span class="tag '+t[1]+'">'+t[0]+'</span></div><p class="mut">'+r.place+' | '+r.day+' ساعت '+r.slot+' | '+fa(r.g)+' نفر</p>'+
+   (r.st==='wait'?'<div class="acts"><button class="go" onclick="decide('+r.id+',\'ok\')">تأیید رزرو</button><button onclick="decide('+r.id+',\'no\')">رد و بازگشت وجه</button></div>':'')+'</div>'});
+  h+='<p class="mut">رزرو جدیدی که از بخش «مشتری» ثبت کنید، همین‌جا ظاهر می‌شود.</p><p class="mut" style="margin-top:6px">کمیسیون پلتفرم این ماه: '+(fee()?fa(fee())+'٪ از هر پرداخت':'صفر (دوره رایگان)')+'</p>';
+ } else if(S.screen==='list'){
+  h+='<h2>کجا می‌روید؟</h2>';
+  places.forEach(function(p){h+='<button class="card place" onclick="go(\'detail\','+p.id+')"><span class="ico" style="background:'+p.bg+'">'+p.emoji+'</span><span style="flex:1"><b>'+p.name+'</b><br><span class="mut">'+p.kind+' | '+p.area+'</span></span><span class="mut">★ '+fa(p.rate)+'</span></button>'});
+ } else if(S.screen==='detail'){
+  var p=P();
+  h+='<button class="back" onclick="go(\'list\')">بازگشت به فهرست</button><h2>'+p.name+'</h2><p class="mut">'+p.area+'</p><h2 style="margin-top:16px;font-size:15px">روز</h2><div class="chips">';
+  days.slice(0,1).forEach(function(d,i){h+='<button class="chip'+(S.day===i?' on':'')+'" onclick="pick(\'day\','+i+')">'+d+'</button>'});
+  h+='</div><h2 style="font-size:15px">ساعت</h2><div class="chips">';
+  p.slots.forEach(function(s){var bad=p.off.indexOf(s)>-1;h+='<button class="chip'+(S.slot===s?' on':'')+'"'+(bad?' disabled':'')+' onclick="pick(\'slot\',\''+s+'\')">'+s+'</button>'});
+  h+='</div><div class="row card"><b>تعداد نفرات</b><div class="step"><button onclick="pick(\'guests\',Math.min(12,S.guests+1))">+</button><b>'+fa(S.guests)+'</b><button onclick="pick(\'guests\',Math.max(1,S.guests-1))">−</button></div></div>'+
+  menuHtml(p)+'<button class="btn" '+(S.slot&&total()?'':'disabled')+' onclick="go(\'pay\')">ادامه و پرداخت کل حساب</button>';
+ } else if(S.screen==='pay'){
+  var q=P();
+  h+='<button class="back" onclick="go(\'detail\')">ویرایش رزرو</button><h2>خلاصه رزرو</h2><div class="card sum"><div><span>مکان</span><span>'+q.name+'</span></div><div><span>زمان</span><span>'+days[S.day]+'، '+S.slot+'</span></div><div><span>تعداد نفرات</span><span>'+fa(S.guests)+' نفر</span></div><div><span>سفارش</span><span>'+lines()+'</span></div><div><span>مبلغ کل</span><span>'+fa(total())+' تومان</span></div></div>'+
+  '<p class="mut" style="margin-bottom:14px">لغو تا ۲ ساعت قبل از رزرو، کل مبلغ را برمی‌گرداند.</p><button class="btn" onclick="pay()">پرداخت '+fa(total())+' تومان</button><p class="mut" style="text-align:center;margin-top:8px">در نسخه واقعی به درگاه بانکی متصل می‌شود.</p>';
+ } else if(S.screen==='done'){
+  h+='<div class="card done"><div class="big">✅</div><h2>رزرو شما ثبت شد</h2><p class="mut">پس از تأیید کافه، پیامک برایتان ارسال می‌شود.</p><div class="code">'+S.code+'</div><p class="mut">این کد پیگیری را هنگام ورود نشان دهید.</p></div><button class="btn sec" onclick="go(\'list\')">رزرو جدید</button><p class="mut" style="text-align:center;margin-top:10px">برای دیدن رزرو در پنل مدیر، تب «مدیر کافه» را بزنید.</p>';
+ }
+ v.innerHTML=h}
+render();
+</script>
+</body>
+</html>
